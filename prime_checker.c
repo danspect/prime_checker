@@ -1,12 +1,19 @@
+#include "prime_checker.h"
+#include <math.h>
 #include <stdio.h>
 
-#define PROJECT_NAME "prime_checker"
+int isPrime(int *number) {
+  if (*number < 2 || (*number % 2 == 0 && *number != 2)) {
+    return 1;
+  }
 
-int main(int argc, char **argv) {
-    if(argc != 1) {
-        printf("%s takes no arguments.\n", argv[0]);
-        return 1;
+  int i;
+  int numberSquareRoot = floor(sqrt(*number));
+  for (i = 3; i <= numberSquareRoot; i += 2) {
+    if (*number % i == 0) {
+      return 1;
     }
-    printf("This is project %s.\n", PROJECT_NAME);
-    return 0;
+  }
+
+  return 0;
 }
